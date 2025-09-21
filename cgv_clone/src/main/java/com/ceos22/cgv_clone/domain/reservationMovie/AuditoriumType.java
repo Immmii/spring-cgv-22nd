@@ -19,7 +19,7 @@ public class AuditoriumType {
     @Column(nullable=false, length=100)
     private String name;
 
-    @OneToOne(mappedBy = "auditoriumType", cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "auditoriumType", fetch = FetchType.LAZY)
     private SeatTemplate seatTemplate;
 
     public AuditoriumType(String code, String name, int rows, int cols) {
