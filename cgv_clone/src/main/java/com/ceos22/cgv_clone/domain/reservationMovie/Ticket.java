@@ -14,10 +14,12 @@ public class Ticket {
     @Column(name = "ticket_id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name="reservation_id", nullable=false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="reservation_id", nullable=false)
     private Reservation reservation;
 
-    @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name="seat_id", nullable=false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="seat_id", nullable=false)
     private Seat seat;
 
     @Enumerated(EnumType.STRING)
@@ -26,6 +28,7 @@ public class Ticket {
     @Column(nullable=false)
     private int unitPrice; // 스냅샷
 
+    //== 생성 메서드==//
     public Ticket(Seat seat, AgeGroup ageGroup, int unitPrice) {
         this.seat = seat; this.ageGroup = ageGroup; this.unitPrice = unitPrice;
     }

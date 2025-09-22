@@ -5,7 +5,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Entity @Table(name = "movie")
+@Entity
+@Table(name = "movie")
 @Getter @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Movie {
 
@@ -21,7 +22,10 @@ public class Movie {
     @Column(columnDefinition = "text")
     private String introduction;
 
+    //==생성 메서드==//
     public Movie(String movieTitle, Integer runningTime, String introduction) {
-        this.movieTitle = movieTitle; this.runningTime = runningTime; this.introduction = introduction;
+        this.movieTitle = movieTitle;
+        this.runningTime = runningTime;
+        this.introduction = introduction;
     }
 }

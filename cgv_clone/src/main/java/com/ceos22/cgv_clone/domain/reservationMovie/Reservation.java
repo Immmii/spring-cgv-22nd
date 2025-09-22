@@ -21,24 +21,25 @@ public class Reservation {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="member_id")
-    private Member member;
+    private Member member; // 주문 회원
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name="screening_id", nullable=false)
-    private Screening screening;
+    private Screening screening; // 상영 회차
+
+    @Column(nullable=false)
+    private LocalDateTime reservedAt = LocalDateTime.now(); // 예매 시간
 
     @Enumerated(EnumType.STRING)
-    private ReservationStatus status = ReservationStatus.CREATED;
+    private ReservationStatus status = ReservationStatus.CREATED; // 예매 상태
 
     @Column(nullable=false)
     private int totalAmount; // 스냅샷 합계
 
-    @Column(nullable=false)
-    private LocalDateTime reservedAt = LocalDateTime.now();
-
     @OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ticket> tickets = new ArrayList<>();
 
+    //==생성 메서드==//
     public Reservation(Member member, Screening screening) {
         this.member = member; this.screening = screening;
     }
