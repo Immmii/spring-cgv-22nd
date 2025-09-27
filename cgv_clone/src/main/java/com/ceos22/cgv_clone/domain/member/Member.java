@@ -18,12 +18,6 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
-    @Column(nullable = false, length=30, unique = true)
-    private String loginId;
-
-    @Column(nullable = false, length=255)
-    private String password;
-
     @Column(nullable=false, length=50)
     private String name;
 
@@ -31,6 +25,12 @@ public class Member {
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
+
+    @Column(nullable = false, length=30, unique = true)
+    private String loginId;
+
+    @Column(nullable = false, length=255)
+    private String password;
 
     public Member(String name, int age, Gender gender, String loginId, String password) {
         this.name = name; this.age = age; this.gender = gender; this.loginId = loginId; this.password = password;
