@@ -7,13 +7,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "member")
+@Table(
+        name = "member",
+        uniqueConstraints = @UniqueConstraint(name = "uk_member_login_id", columnNames = "login_id")
+)
 @Getter @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
     private Long id;
+
+    @Column(nullable = false, length=30, unique = true)
+    private String loginId;
+
+    @Column(nullable = false, length=255)
+    private String password;
 
     @Column(nullable=false, length=50)
     private String name;
@@ -23,11 +32,8 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @Column(length=30)
-    private String phoneNum;
-
-    public Member(String name, int age, Gender gender, String phoneNum) {
-        this.name = name; this.age = age; this.gender = gender; this.phoneNum = phoneNum;
+    public Member(String name, int age, Gender gender, String loginId, String password) {
+        this.name = name; this.age = age; this.gender = gender; this.loginId = loginId; this.password = password;
     }
 
 }
