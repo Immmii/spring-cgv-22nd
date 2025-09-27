@@ -18,7 +18,7 @@ public class Member {
     @Column(nullable=false, length=50)
     private String name;
 
-    private Integer age;
+    private int age;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
@@ -26,7 +26,7 @@ public class Member {
     @Column(length=30)
     private String phoneNum;
 
-    public Member(String name, Integer age, Gender gender, String phoneNum) {
+    public Member(String name, int age, Gender gender, String phoneNum) {
         this.name = name; this.age = age; this.gender = gender; this.phoneNum = phoneNum;
     }
 
