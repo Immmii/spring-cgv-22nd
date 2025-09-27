@@ -11,6 +11,18 @@ GET http://localhost:8080/hello
 
 #POST http://localhost:8080/api/v1/ticket/create
 
+### 회원 등록
+POST http://localhost:8080/api/v1/members
+Content-Type: application/json
+
+{
+  "name": "lee",
+  "age": 20,
+  "gender": "FEMALE",
+  "loginId": "loginlee",
+  "password": "passwordlee"
+}
+
 ### 영화 예매 생성
 POST http://localhost:8080/api/reservations
 Content-Type: application/json
@@ -29,3 +41,16 @@ POST http://localhost:8080/api/reservations/101/confirm
 
 ### 영화 예매 취소
 POST http://localhost:8080/api/reservations/101/cancel
+
+
+### 영화관 찜 (토글 형식) -> /api/favorites/cinemas/{memberId}/{cinemaId}/toggle
+POST http://localhost:8080/api/favorites/cinemas/1/10/toggle
+
+### 영화관 찜 목록 조회 -> /api/favorites/cinemas/{memberId}
+POST http://localhost:8080/api/favorites/cinemas/1
+
+### 영화 찜 (토글 형식) -> /api/favorites/movies/{memberId}/{movieId}/toggle
+POST http://localhost:8080/api/favorites/movies/1/101/toggle
+
+### 영화 찜 목록 조회 -> /api/favorites/movies/{memberId}
+POST http://localhost:8080/api/favorites/movies/1
